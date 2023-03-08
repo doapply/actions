@@ -1,0 +1,32 @@
+name: "w3security Docker"
+description: "Check your Docker images for vulnerabilties using w3security"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  command:
+    description: "Which w3security command to run, defaults to test"
+    default: test
+  args:
+    description: "Additional arguments to pass to w3security"
+  image:
+    description: "Image to test"
+  json:
+    description: "Output a w3security.json file with results if running the test command"
+    default: false
+  sarif:
+    description: "Output a w3security.sarif file with results if running the test command"
+    default: true
+runs:
+  using: "docker"
+  image: "docker://w3security/w3security:docker"
+  env:
+    W3SECURITY_INTEGRATION_NAME: GITHUB_ACTIONS
+    W3SECURITY_INTEGRATION_VERSION: docker
+  args:
+  - w3security
+  - ${{ inputs.command }}
+  - ${{ inputs.args }}
+  - --docker
+  - ${{ inputs.image }}
