@@ -1,0 +1,26 @@
+name: "w3security dotNET"
+description: "Check your dotNET application for vulnerabilties using w3security"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  command:
+    description: "Which w3security command to run, defaults to test"
+    default: test
+  args:
+    description: "Additional arguments to pass to w3security"
+  json:
+    description: "Output a w3security.json file with results if running the test command"
+    default: false
+runs:
+  using: "docker"
+  image: "docker://w3security/w3security:dotnet"
+  env:
+    FORCE_COLOR: 2
+    W3SECURITY_INTEGRATION_NAME: GITHUB_ACTIONS
+    W3SECURITY_INTEGRATION_VERSION: dotnet
+  args:
+  - w3security
+  - ${{ inputs.command }}
+  - ${{ inputs.args }} 
