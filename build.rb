@@ -2,7 +2,7 @@
 
 #
 # This script generates GitHub Actions for the currently supported
-# set of Snyk images. The Actions all have the same interface.
+# set of w3security images. The Actions all have the same interface.
 #
 
 require "erb"
