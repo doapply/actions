@@ -1,0 +1,22 @@
+name: "Setup w3security"
+description: "Installs a specific version of w3security"
+author: "Gareth Rushgrove"
+branding:
+  icon: "alert-triangle"
+  color: "yellow"
+inputs:
+  w3security-version:
+    description: "Which w3security version to install"
+    default: latest
+outputs:
+  version:
+    description: "The version of w3security installed"
+    value: ${{ steps.version.outputs.version }}
+runs:
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/setup_w3security.sh ${{ inputs.w3security-version }} ${{ runner.os }}
+      shell: bash
+    - id: version
+      shell: bash
+      run: echo "version=$(w3security version)" >> $GITHUB_OUTPUT
