@@ -1,5 +1,5 @@
-name: "w3security Gradle (jdk12)"
-description: "Check your Gradle application for vulnerabilties using w3security"
+name: "w3security Maven (3-jdk-11)"
+description: "Check your Maven application for vulnerabilties using w3security"
 author: "Gareth Rushgrove"
 branding:
   icon: "alert-triangle"
@@ -15,11 +15,11 @@ inputs:
     default: false
 runs:
   using: "docker"
-  image: "docker://w3security/w3security:gradle-jdk12"
+  image: "docker://w3security/w3security:maven-3-jdk-11"
   env:
     FORCE_COLOR: 2
     W3SECURITY_INTEGRATION_NAME: GITHUB_ACTIONS
-    W3SECURITY_INTEGRATION_VERSION: gradle-jdk12
+    W3SECURITY_INTEGRATION_VERSION: maven-3-jdk-11
   args:
   - w3security
   - ${{ inputs.command }}
