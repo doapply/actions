@@ -1,4 +1,4 @@
-name: "Generate w3security GitHub Actions"
+name: "Generate doApply GitHub Actions"
 on:
   push:
     branches:
